@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Randevu Al</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ÜST MENÜ -->
+    <header>
+        <div class="logo">BEYOĞLU BERBER</div>
+        <nav>
+            <a href="#">HAKKIMIZDA</a>
+            <a href="#">BERBERLERİMİZ</a>
+            <a href="#">HİZMETLER</a>
+            <a href="#" class="active-nav">RANDEVU AL</a>
+        </nav>
+        <button class="header-btn">RANDEVU AL</button>
+    </header>
+
+    <main class="container">
+        
+        <!-- BAŞLIK -->
+        <div class="page-header">
+            <h2>Randevu Oluştur</h2>
+            <p>Lütfen almak istediğiniz hizmeti ve tercih ettiğiniz uzmanı seçiniz.</p>
+        </div>
+
+        <!-- 01. HİZMET SEÇİMİ -->
+        <section class="step-section">
+            <h3 class="step-title"><span class="step-num">01</span> HİZMET SEÇİMİ</h3>
+            
+            <div class="service-list" id="service-container">
+                <div class="service-card selected" data-price="900" onclick="selectService(this)">
+                    <div class="service-info">
+                        <h4>Saç & Sakal</h4>
+                        <p>Kapsamlı saç kesimi ve sakal tıraşı kombinasyonu.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>₺900</span>
+                        <div class="check-circle">✓</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-price="500" onclick="selectService(this)">
+                    <div class="service-info">
+                        <h4>Bakım</h4>
+                        <p>Yüz maskesi ve canlandırıcı terapi.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>₺500</span>
+                        <div class="check-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. BERBER SEÇİMİ -->
+        <section class="step-section">
+            <h3 class="step-title"><span class="step-num">02</span> BERBER SEÇİMİ</h3>
+            
+            <div class="barber-grid" id="barber-container">
+                <div class="barber-card selected" onclick="selectBarber(this)">
+                    <div class="icon">✂</div>
+                    <h4>Selim Usta</h4>
+                </div>
+                <div class="barber-card" onclick="selectBarber(this)">
+                    <div class="icon">🖌</div>
+                    <h4>Mert Bey</h4>
+                </div>
+                <div class="barber-card" onclick="selectBarber(this)">
+                    <div class="icon">👨</div>
+                    <h4>Can Usta</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. TARİH VE SAAT SEÇİMİ -->
+        <section class="step-section">
+            <h3 class="step-title"><span class="step-num">03</span> TARİH VE SAAT</h3>
+            
+            <div class="time-container">
+                <div class="date-header">
+                    <span class="current-date">14 Mart 2026, Perşembe</span>
+                    <a href="#" class="change-date">Değiştir</a>
+                </div>
+
+                <!-- Kural FR-UC-04: 09:00 - 20:00 arası saatler -->
+                <div class="time-grid" id="time-container">
+                    <div class="time-box available" onclick="selectTime(this)">09:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">10:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">11:00</div>
+                    <div class="time-box booked">12:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">13:00</div>
+                    
+                    <div class="time-box available" onclick="selectTime(this)">14:00</div>
+                    <div class="time-box booked">15:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">16:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">17:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">18:00</div>
+
+                    <div class="time-box available" onclick="selectTime(this)">19:00</div>
+                    <div class="time-box available" onclick="selectTime(this)">20:00</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALT ONAY BÖLÜMÜ -->
+        <div class="checkout-section">
+            <div class="total-price-box">
+                <span class="total-label">TOPLAM TUTAR</span>
+                <span class="total-amount" id="total-price">₺900,00</span>
+            </div>
+            <button class="submit-btn" onclick="randevuyuOnayla()">RANDEVUYU ONAYLA VE DEVAM ET</button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">BEYOĞLU BERBER</div>
+        <div class="footer-links">
+            <a href="#">Gizlilik Politikası</a>
+            <a href="#">Kullanım Şartları</a>
+            <a href="#">İletişim</a>
+        </div>
+        <div class="copyright">© 2026 BEYOĞLU BERBER. Tüm Hakları Saklıdır.</div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

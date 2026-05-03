@@ -1,0 +1,247 @@
+/* Temel Renkler ve Fontlar */
+:root {
+    --bg-dark: #111111;
+    --bg-card: #1a1a1a;
+    --gold: #cba052;
+    --text-main: #f2f2f2;
+    --text-muted: #888888;
+    --border-color: #333333;
+    
+    /* Ödev FR-UC-04 Kuralları İçin */
+    --box-white: #ffffff;
+    --box-grey: rgba(128, 128, 128, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border-color);
+}
+.logo {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+nav a:hover, .active-nav {
+    color: var(--gold);
+}
+.active-nav {
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 5px;
+}
+.header-btn {
+    background-color: var(--gold);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Ana İçerik */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.page-header h2 {
+    color: var(--gold);
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.page-header p {
+    color: var(--text-main);
+    font-size: 15px;
+}
+
+/* Bölümler */
+.step-section {
+    margin-bottom: 50px;
+}
+.step-title {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.step-num {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+}
+
+/* 01. Hizmet Kartları */
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.service-card {
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.service-card.selected {
+    border-color: var(--gold);
+}
+.service-info h4 { font-size: 16px; font-weight: normal; margin-bottom: 5px; }
+.service-info p { color: var(--text-muted); font-size: 14px; }
+.service-price { display: flex; align-items: center; gap: 15px; color: var(--gold); font-size: 16px; }
+.check-circle {
+    width: 20px; height: 20px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    color: transparent;
+}
+.service-card.selected .check-circle { color: var(--gold); }
+
+/* 02. Berber Kartları */
+.barber-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.barber-card {
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.barber-card.selected {
+    border-color: var(--gold);
+}
+.barber-card .icon {
+    color: var(--gold);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.barber-card h4 { font-weight: normal; font-size: 16px; }
+
+/* 03. Tarih ve Saat */
+.time-container {
+    border: 1px solid var(--border-color);
+    padding: 30px;
+}
+.date-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+.current-date { font-size: 16px; }
+.change-date { color: var(--gold); text-decoration: none; font-size: 13px; }
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+/* Kural FR-UC-04: Müsait Beyaz, Dolu Gri */
+.time-box {
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    font-size: 14px;
+}
+.time-box.available {
+    background-color: var(--box-white);
+    color: #000;
+}
+.time-box.available:hover {
+    border-color: var(--gold);
+}
+.time-box.selected {
+    background-color: var(--gold);
+    color: #000;
+    font-weight: bold;
+}
+.time-box.booked {
+    background-color: var(--box-grey);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    border: 1px solid var(--border-color);
+}
+
+/* Alt Ödeme Alanı */
+.checkout-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
+    margin-top: 20px;
+}
+.total-label { display: block; font-size: 11px; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 5px; }
+.total-amount { font-size: 20px; color: var(--gold); font-family: Georgia, serif;}
+.submit-btn {
+    background-color: var(--gold);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover { background-color: #e0b45c; }
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0a0a0a;
+}
+.footer-logo { font-family: Georgia, serif; color: var(--gold); font-size: 18px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-size: 13px; }
+.copyright { color: var(--text-muted); font-size: 12px; }
