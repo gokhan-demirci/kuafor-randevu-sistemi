@@ -26,14 +26,14 @@ public class RandevuServiceTest {
 
     @Test
     public void testRandevuOlustur() {
-        // Sahte bir randevu hazırlıyoruz
+        
         Randevu sahteRandevu = new Randevu();
         sahteRandevu.setId(1L);
         sahteRandevu.setMusteriTelefon("05551234567");
         sahteRandevu.setBerberAdi("Selim Usta");
         sahteRandevu.setSaat("14:00");
 
-        // Kaydetme işlemi taklit ediliyor
+        
         when(repository.save(any(Randevu.class))).thenReturn(sahteRandevu);
 
         // Kodu çalıştırıyoruz

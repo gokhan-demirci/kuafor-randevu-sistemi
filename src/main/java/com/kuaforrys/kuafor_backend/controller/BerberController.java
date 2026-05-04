@@ -16,7 +16,6 @@ public class BerberController {
         this.service = service;
     }
 
-    // Can ve Serkan'ın arayüzden berber listesini çekebilmesi için
     @GetMapping("/liste")
     public List<Berber> berberListesi() {
         return service.tumBerberleriGetir();

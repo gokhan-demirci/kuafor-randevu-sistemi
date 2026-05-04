@@ -14,12 +14,12 @@ public class BerberService {
         this.repository = repository;
     }
 
-    // Sisteme yeni berber ekleme (Admin için)
+    
     public Berber berberEkle(Berber berber) {
         return repository.save(berber);
     }
 
-    // US-02: Berberin ve müşterilerin listedeki tüm berberleri görebilmesi
+    
     public List<Berber> tumBerberleriGetir() {
         return repository.findAll();
     }

@@ -15,7 +15,7 @@ public class MusteriController {
         this.service = service;
     }
 
-    // Serkan ve Can'ın hazırladığı arayüzden gelen müşteri bilgilerini yakalıyoruz
+    
     @PostMapping("/kayit")
     public Musteri kayitOl(@RequestBody Musteri musteri) {
         return service.musteriKaydet(musteri);
