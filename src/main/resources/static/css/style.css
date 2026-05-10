@@ -245,3 +245,89 @@ footer {
 .footer-logo { font-family: Georgia, serif; color: var(--gold); font-size: 18px; }
 .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-size: 13px; }
 .copyright { color: var(--text-muted); font-size: 12px; }
+html {
+    scroll-behavior: smooth;
+}
+
+/* Berberlerimiz Bölümü */
+.masters-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 40px;
+}
+
+.masters-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.masters-header h1 {
+    color: var(--gold);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.masters-header p {
+    color: #b7b7b7;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.masters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 90px;
+    row-gap: 70px;
+}
+
+.master-card {
+    display: flex;
+    gap: 24px;
+    padding-left: 28px;
+    border-left: 1px solid var(--border-color);
+    min-height: 150px;
+}
+
+.master-letter {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+}
+
+.master-info h2 {
+    color: var(--text-main);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.master-info p {
+    color: #b7b7b7;
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 420px;
+}
+
+@media (max-width: 900px) {
+    .masters-grid {
+        grid-template-columns: 1fr;
+        row-gap: 45px;
+    }
+
+    .masters-header h1 {
+        font-size: 38px;
+    }
+
+    .master-info h2 {
+        font-size: 28px;
+    }
+}

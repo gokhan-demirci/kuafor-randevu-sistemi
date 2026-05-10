@@ -7,28 +7,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <!-- ÜST MENÜ -->
     <header>
         <div class="logo">BEYOĞLU BERBER</div>
         <nav>
-            <a href="#">HAKKIMIZDA</a>
-            <a href="#">BERBERLERİMİZ</a>
-            <a href="#">HİZMETLER</a>
-            <a href="#" class="active-nav">RANDEVU AL</a>
+           <a href="#hakkimizda">HAKKIMIZDA</a>
+            <a href="berberlerimiz.html">BERBERLERİMİZ</a>
+            <a href="#hizmetler">HİZMETLER</a>
+            <a href="index.html" class="active-nav">RANDEVU AL</a>
         </nav>
-        <button class="header-btn">RANDEVU AL</button>
+        <button class="header-btn" onclick="window.location.href='index.html'">RANDEVU AL</button>
     </header>
+   
 
-    <main class="container">
+    <main class="container" id="randevu">
         
-        <!-- BAŞLIK -->
-        <div class="page-header">
-            <h2>Randevu Oluştur</h2>
-            <p>Lütfen almak istediğiniz hizmeti ve tercih ettiğiniz uzmanı seçiniz.</p>
-        </div>
-
-        <!-- 01. HİZMET SEÇİMİ -->
+    <div class="page-header">
+        <h2>Randevu Oluştur</h2>
+        <p>Lütfen almak istediğiniz hizmeti ve tercih ettiğiniz uzmanı seçiniz.</p>
+    </div>
+        
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">01</span> HİZMET SEÇİMİ</h3>
             
@@ -57,27 +54,27 @@
             </div>
         </section>
 
-        <!-- 02. BERBER SEÇİMİ -->
+        
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">02</span> BERBER SEÇİMİ</h3>
             
             <div class="barber-grid" id="barber-container">
                 <div class="barber-card selected" onclick="selectBarber(this)">
                     <div class="icon">✂</div>
-                    <h4>Selim Usta</h4>
+                    <h4>Selim Beyoğlu</h4>
                 </div>
                 <div class="barber-card" onclick="selectBarber(this)">
                     <div class="icon">🖌</div>
-                    <h4>Mert Bey</h4>
+                    <h4>Mert Alkan</h4>
                 </div>
                 <div class="barber-card" onclick="selectBarber(this)">
                     <div class="icon">👨</div>
-                    <h4>Can Usta</h4>
+                    <h4>Can Demir</h4>
                 </div>
             </div>
         </section>
 
-        <!-- 03. TARİH VE SAAT SEÇİMİ -->
+       
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">03</span> TARİH VE SAAT</h3>
             
@@ -87,7 +84,7 @@
                     <a href="#" class="change-date">Değiştir</a>
                 </div>
 
-                <!-- Kural FR-UC-04: 09:00 - 20:00 arası saatler -->
+               
                 <div class="time-grid" id="time-container">
                     <div class="time-box available" onclick="selectTime(this)">09:00</div>
                     <div class="time-box available" onclick="selectTime(this)">10:00</div>
@@ -107,7 +104,7 @@
             </div>
         </section>
 
-        <!-- ALT ONAY BÖLÜMÜ -->
+       
         <div class="checkout-section">
             <div class="total-price-box">
                 <span class="total-label">TOPLAM TUTAR</span>
@@ -118,7 +115,7 @@
 
     </main>
 
-    <!-- FOOTER -->
+    
     <footer>
         <div class="footer-logo">BEYOĞLU BERBER</div>
         <div class="footer-links">
