@@ -7,30 +7,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header>
         <div class="logo">BEYOĞLU BERBER</div>
+
         <nav>
-           <a href="#hakkimizda">HAKKIMIZDA</a>
+            <a href="hakkimizda.html">HAKKIMIZDA</a>
             <a href="berberlerimiz.html">BERBERLERİMİZ</a>
-            <a href="#hizmetler">HİZMETLER</a>
+            <a href="hizmetler.html">HİZMETLER</a>
             <a href="index.html" class="active-nav">RANDEVU AL</a>
         </nav>
+
         <button class="header-btn" onclick="window.location.href='index.html'">RANDEVU AL</button>
     </header>
-   
 
     <main class="container" id="randevu">
-        
-    <div class="page-header">
-        <h2>Randevu Oluştur</h2>
-        <p>Lütfen almak istediğiniz hizmeti ve tercih ettiğiniz uzmanı seçiniz.</p>
-    </div>
-        
+
+        <div class="page-header">
+            <h2>Randevu Oluştur</h2>
+            <p>Lütfen hizmet, berber, tarih ve saat seçerek randevunuzu oluşturunuz.</p>
+        </div>
+
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">01</span> HİZMET SEÇİMİ</h3>
-            
+
             <div class="service-list" id="service-container">
-                <div class="service-card selected" data-price="900" onclick="selectService(this)">
+
+                <div class="service-card selected" data-service="Saç & Sakal" data-price="900" onclick="selectService(this)">
                     <div class="service-info">
                         <h4>Saç & Sakal</h4>
                         <p>Kapsamlı saç kesimi ve sakal tıraşı kombinasyonu.</p>
@@ -41,57 +44,85 @@
                     </div>
                 </div>
 
-                <div class="service-card" data-price="500" onclick="selectService(this)">
+                <div class="service-card" data-service="Saç Kesimi" data-price="600" onclick="selectService(this)">
+                    <div class="service-info">
+                        <h4>Saç Kesimi</h4>
+                        <p>Klasik veya modern saç kesimi hizmeti.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>₺600</span>
+                        <div class="check-circle"></div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="Sakal Tasarımı" data-price="400" onclick="selectService(this)">
+                    <div class="service-info">
+                        <h4>Sakal Tasarımı</h4>
+                        <p>Yüz hatlarınıza uygun sakal şekillendirme.</p>
+                    </div>
+                    <div class="service-price">
+                        <span>₺400</span>
+                        <div class="check-circle"></div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="Bakım" data-price="500" onclick="selectService(this)">
                     <div class="service-info">
                         <h4>Bakım</h4>
-                        <p>Yüz maskesi ve canlandırıcı terapi.</p>
+                        <p>Yüz maskesi ve canlandırıcı bakım uygulaması.</p>
                     </div>
                     <div class="service-price">
                         <span>₺500</span>
                         <div class="check-circle"></div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">02</span> BERBER SEÇİMİ</h3>
-            
+
             <div class="barber-grid" id="barber-container">
-                <div class="barber-card selected" onclick="selectBarber(this)">
+
+                <div class="barber-card selected" data-barber="Selim Beyoğlu" onclick="selectBarber(this)">
                     <div class="icon">✂</div>
                     <h4>Selim Beyoğlu</h4>
+                    <p>Klasik kesim uzmanı</p>
                 </div>
-                <div class="barber-card" onclick="selectBarber(this)">
-                    <div class="icon">🖌</div>
+
+                <div class="barber-card" data-barber="Mert Alkan" onclick="selectBarber(this)">
+                    <div class="icon">◆</div>
                     <h4>Mert Alkan</h4>
+                    <p>Sakal ve bakım uzmanı</p>
                 </div>
-                <div class="barber-card" onclick="selectBarber(this)">
-                    <div class="icon">👨</div>
+
+                <div class="barber-card" data-barber="Can Demir" onclick="selectBarber(this)">
+                    <div class="icon">✦</div>
                     <h4>Can Demir</h4>
+                    <p>Modern stil uzmanı</p>
                 </div>
+
             </div>
         </section>
 
-       
         <section class="step-section">
             <h3 class="step-title"><span class="step-num">03</span> TARİH VE SAAT</h3>
-            
+
             <div class="time-container">
-                <div class="date-header">
-                    <span class="current-date">14 Mart 2026, Perşembe</span>
-                    <a href="#" class="change-date">Değiştir</a>
+
+                <div class="date-picker-area">
+                    <label for="appointment-date">Randevu Tarihi</label>
+                    <input type="date" id="appointment-date">
                 </div>
 
-               
                 <div class="time-grid" id="time-container">
                     <div class="time-box available" onclick="selectTime(this)">09:00</div>
                     <div class="time-box available" onclick="selectTime(this)">10:00</div>
                     <div class="time-box available" onclick="selectTime(this)">11:00</div>
                     <div class="time-box booked">12:00</div>
                     <div class="time-box available" onclick="selectTime(this)">13:00</div>
-                    
+
                     <div class="time-box available" onclick="selectTime(this)">14:00</div>
                     <div class="time-box booked">15:00</div>
                     <div class="time-box available" onclick="selectTime(this)">16:00</div>
@@ -101,28 +132,55 @@
                     <div class="time-box available" onclick="selectTime(this)">19:00</div>
                     <div class="time-box available" onclick="selectTime(this)">20:00</div>
                 </div>
+
             </div>
         </section>
 
-       
+        <section class="step-section">
+            <h3 class="step-title"><span class="step-num">04</span> MÜŞTERİ BİLGİLERİ</h3>
+
+            <div class="customer-form">
+
+                <div class="form-group">
+                    <label for="customer-name">Ad Soyad</label>
+                    <input type="text" id="customer-name" placeholder="Adınızı ve soyadınızı giriniz">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Telefon</label>
+                    <input type="tel" id="customer-phone" placeholder="05xx xxx xx xx">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="customer-note">Not</label>
+                    <textarea id="customer-note" rows="4" placeholder="Eklemek istediğiniz not varsa yazabilirsiniz"></textarea>
+                </div>
+
+            </div>
+        </section>
+
         <div class="checkout-section">
             <div class="total-price-box">
                 <span class="total-label">TOPLAM TUTAR</span>
                 <span class="total-amount" id="total-price">₺900,00</span>
             </div>
-            <button class="submit-btn" onclick="randevuyuOnayla()">RANDEVUYU ONAYLA VE DEVAM ET</button>
+
+            <button class="submit-btn" onclick="randevuyuOnayla()">RANDEVUYU ONAYLA</button>
         </div>
+
+        <div class="appointment-result" id="appointment-result"></div>
 
     </main>
 
-    
     <footer>
         <div class="footer-logo">BEYOĞLU BERBER</div>
+
         <div class="footer-links">
-            <a href="#">Gizlilik Politikası</a>
-            <a href="#">Kullanım Şartları</a>
-            <a href="#">İletişim</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="hizmetler.html">Hizmetler</a>
+            <a href="berberlerimiz.html">Berberlerimiz</a>
         </div>
+
         <div class="copyright">© 2026 BEYOĞLU BERBER. Tüm Hakları Saklıdır.</div>
     </footer>
 
