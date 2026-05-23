@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Tüm Randevular</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">BEYOĞLU BERBER</div>
+        <ul class="nav-links">
+            <li><a href="admin.html">📊 Gösterge Paneli</a></li>
+            <li><a href="randevular.html">📅 Randevular</a></li>
+            <li><a href="berber-yonetimi.html">✂ Berber Yönetimi</a></li>
+            <li><a href="hizmetler-fiyatlar.html">📋 Hizmetler & Fiyatlar</a></li>
+            <li><a href="ayarlar.html">⚙ Ayarlar</a></li>
+        </ul>
+        <div class="logout-btn">
+            <a href="index.html">🚪 Çıkış Yap</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="topbar">
+            <h2>Tüm Randevular</h2>
+            <div class="date-info">
+                <input type="date" style="background: var(--bg-dark); color: var(--text-main); border: 1px solid var(--border-color); padding: 5px 10px; border-radius: 4px;">
+            </div>
+        </header>
+
+        <div class="table-container">
+            <h3 class="table-title">Randevu Geçmişi ve Planlananlar</h3>
+            <table class="data-table" id="tabloRandevular">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Saat</th>
+                        <th>Müşteri</th>
+                        <th>Hizmet</th>
+                        <th>Berber</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18.05.2026</td>
+                        <td>14:00</td>
+                        <td>Ali Yılmaz</td>
+                        <td>Saç & Sakal</td>
+                        <td>Selim Usta</td>
+                        <td><span class="badge pending">Bekliyor</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Onayla</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">İptal</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17.05.2026</td>
+                        <td>16:30</td>
+                        <td>Burak Şahin</td>
+                        <td>Sadece Saç</td>
+                        <td>Mert Bey</td>
+                        <td><span class="badge approved">Tamamlandı</span></td>
+                        <td><span style="color: var(--text-muted); font-size: 12px;">İşlem Yok</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+    <div id="modalRandevuOnay" class="modal-overlay">
+        <div class="modal-content" style="width: 380px; text-align: center;">
+            <h3 style="color: var(--gold);">Randevu Onayı</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">Bu randevuyu onaylamak istiyor musunuz?</p>
+            <div class="modal-actions" style="justify-content: center; gap: 15px;">
+                <button type="button" id="btnRandevuOnayIptal" class="action-btn">Vazgeç</button>
+                <button type="button" id="btnRandevuOnayEvet" class="action-btn" style="background: var(--gold); color: #000;">Evet, Onayla</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalRandevuIptal" class="modal-overlay">
+        <div class="modal-content" style="width: 380px; text-align: center;">
+            <h3 style="color: #e74c3c;">Randevu İptali</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">Bu randevuyu iptal etmek istediğinize emin misiniz?</p>
+            <div class="modal-actions" style="justify-content: center; gap: 15px;">
+                <button type="button" id="btnRandevuIptalIptal" class="action-btn">Vazgeç</button>
+                <button type="button" id="btnRandevuIptalEvet" class="action-btn" style="background: #e74c3c; color: #fff; border-color: #e74c3c;">Evet, İptal Et</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

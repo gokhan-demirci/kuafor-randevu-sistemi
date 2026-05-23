@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Hizmetler ve Fiyatlar</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">BEYOĞLU BERBER</div>
+        <ul class="nav-links">
+            <li><a href="admin.html">📊 Gösterge Paneli</a></li>
+            <li><a href="randevular.html">📅 Randevular</a></li>
+            <li><a href="berber-yonetimi.html">✂ Berber Yönetimi</a></li>
+            <li class="active"><a href="hizmetler-fiyatlar.html">📋 Hizmetler & Fiyatlar</a></li>
+            <li><a href="ayarlar.html">⚙ Ayarlar</a></li>
+        </ul>
+        <div class="logout-btn">
+            <a href="index.html">🚪 Çıkış Yap</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="topbar">
+            <h2>Hizmetler ve Fiyatlar</h2>
+            <button class="action-btn" style="background: var(--gold); color: #000; font-weight: bold; padding: 10px 20px;" id="btnYeniHizmet">
+                + Yeni Hizmet Ekle 
+            </button>
+        </header>
+
+        <div class="table-container">
+            <h3 class="table-title">Mevcut Hizmet Listesi</h3>
+            <table class="data-table" id="tabloHizmetler">
+                <thead>
+                    <tr>
+                        <th>Hizmet Adı</th>
+                        <th>Tahmini Süre</th>
+                        <th>Fiyat</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Saç & Sakal Kesimi</td>
+                        <td>45 Dakika</td>
+                        <td style="color: var(--gold); font-weight: bold;">₺450</td>
+                        <td><span class="badge approved">Aktif</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Düzenle</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">Kaldır</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sadece Saç Kesimi</td>
+                        <td>30 Dakika</td>
+                        <td style="color: var(--gold); font-weight: bold;">₺300</td>
+                        <td><span class="badge approved">Aktif</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Düzenle</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">Kaldır</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cilt Bakımı Maskesi</td>
+                        <td>15 Dakika</td>
+                        <td style="color: var(--gold); font-weight: bold;">₺150</td>
+                        <td><span class="badge pending">Pasif</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Düzenle</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">Kaldır</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+    <div id="modalHizmetEkle" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Yeni Hizmet Ekle</h3>
+            <form>
+                <div class="modal-form-group">
+                    <label>HİZMET ADI</label>
+                    <input type="text" id="hizmetAd" placeholder="Örn: Saç Kesimi & Maske" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>SÜRE (DAKİKA)</label>
+                    <input type="number" id="hizmetSure" placeholder="Örn: 30" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>FİYAT (TL)</label>
+                    <input type="number" id="hizmetFiyat" placeholder="Örn: 350" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="btnHizmetEkleIptal" class="action-btn" style="color: #e74c3c; border-color: #e74c3c;">İptal</button>
+                    <button type="submit" class="action-btn" style="background: var(--gold); color: #000;">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalHizmetDuzenle" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Hizmet Düzenle</h3>
+            <form>
+                <div class="modal-form-group">
+                    <label>HİZMET ADI</label>
+                    <input type="text" id="editHizmetAd" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>SÜRE (DAKİKA)</label>
+                    <input type="number" id="editHizmetSure" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>FİYAT (TL)</label>
+                    <input type="number" id="editHizmetFiyat" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="btnHizmetDuzenleIptal" class="action-btn" style="color: #e74c3c; border-color: #e74c3c;">Vazgeç</button>
+                    <button type="submit" class="action-btn" style="background: var(--gold); color: #000;">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalHizmetSilOnay" class="modal-overlay">
+        <div class="modal-content" style="width: 350px; text-align: center;">
+            <h3 style="color: #e74c3c;">Hizmet Kaldırma Onayı</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">Bu hizmeti listeden kaldırmak istediğinize emin misiniz?</p>
+            <div class="modal-actions" style="justify-content: center; gap: 15px;">
+                <button type="button" id="btnHizmetSilIptal" class="action-btn">Vazgeç</button>
+                <button type="button" id="btnHizmetSilOnay" class="action-btn" style="background: #e74c3c; color: #fff; border-color: #e74c3c;">Evet, Kaldır</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Berber Yönetimi</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">BEYOĞLU BERBER</div>
+        <ul class="nav-links">
+            <li><a href="admin.html">📊 Gösterge Paneli</a></li>
+            <li><a href="randevular.html">📅 Randevular</a></li>
+            <li class="active"><a href="berber-yonetimi.html">✂ Berber Yönetimi</a></li>
+            <li><a href="hizmetler-fiyatlar.html">📋 Hizmetler & Fiyatlar</a></li>
+            <li><a href="ayarlar.html">⚙ Ayarlar</a></li>
+        </ul>
+        <div class="logout-btn">
+            <a href="index.html">🚪 Çıkış Yap</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="topbar">
+            <h2>Berber Yönetimi</h2>
+            <button id="btnYeniBerber" class="action-btn" style="background: var(--gold); color: #000; font-weight: bold; padding: 10px 20px;">
+                + Yeni Berber Ekle
+            </button>
+        </header>
+
+        <div class="table-container">
+            <h3 class="table-title">Kayıtlı Ustalar</h3>
+            <table class="data-table" id="tabloBerber">
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Uzmanlık Alanı</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Selim Usta</td>
+                        <td>Saç & Sakal</td>
+                        <td><span class="badge approved">Aktif</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Düzenle</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">Sil</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mert Bey</td>
+                        <td>Modern Kesim & Renklendirme</td>
+                        <td><span class="badge approved">Aktif</span></td>
+                        <td>
+                            <button class="action-btn" style="font-size: 12px; margin-right: 5px;">Düzenle</button>
+                            <button class="action-btn" style="font-size: 12px; color: #e74c3c; border-color: #e74c3c;">Sil</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div id="modalBerberEkle" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Yeni Usta Ekle</h3>
+            <form action="#">
+                <div class="modal-form-group">
+                    <label>AD SOYAD</label>
+                    <input type="text" placeholder="Örn: Ali Usta" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>E-POSTA (Sisteme giriş için)</label>
+                    <input type="email" placeholder="ornek@beyogluberber.com" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>UZMANLIK ALANI</label>
+                    <input type="text" placeholder="Örn: Saç & Sakal Kesimi" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="btnModalIptal" class="action-btn" style="color: #e74c3c; border-color: #e74c3c;">İptal Et</button>
+                    <button type="submit" class="action-btn" style="background: var(--gold); color: #000;">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalBerberDuzenle" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Usta Bilgilerini Düzenle</h3>
+            <form>
+                <div class="modal-form-group">
+                    <label>AD SOYAD</label>
+                    <input type="text" id="editAdSoyad" required>
+                </div>
+                <div class="modal-form-group">
+                    <label>UZMANLIK ALANI</label>
+                    <input type="text" id="editUzmanlik" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="btnDuzenleIptal" class="action-btn" style="color: #e74c3c; border-color: #e74c3c;">İptal</button>
+                    <button type="submit" class="action-btn" style="background: var(--gold); color: #000;">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalSilOnay" class="modal-overlay">
+        <div class="modal-content" style="width: 350px; text-align: center;">
+            <h3 style="color: #e74c3c;">Usta Silme Onayı</h3>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">
+                Bu ustayı sistemden silmek istediğinize emin misiniz?
+            </p>
+            <div class="modal-actions" style="justify-content: center; gap: 15px;">
+                <button type="button" id="btnSilIptal" class="action-btn">Vazgeç</button>
+                <button type="button" id="btnSilOnay" class="action-btn" style="background: #e74c3c; color: #fff; border-color: #e74c3c;">Evet, Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

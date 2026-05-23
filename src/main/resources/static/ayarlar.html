@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Sistem Ayarları</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">BEYOĞLU BERBER</div>
+        <ul class="nav-links">
+            <li><a href="admin.html">📊 Gösterge Paneli</a></li>
+            <li><a href="randevular.html">📅 Randevular</a></li>
+            <li><a href="berber-yonetimi.html">✂ Berber Yönetimi</a></li>
+            <li><a href="hizmetler-fiyatlar.html">📋 Hizmetler & Fiyatlar</a></li>
+            <li class="active"><a href="ayarlar.html">⚙ Ayarlar</a></li>
+        </ul>
+        <div class="logout-btn">
+            <a href="index.html">🚪 Çıkış Yap</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="topbar">
+            <h2>Sistem Ayarları</h2>
+            <button class="action-btn" style="background: var(--gold); color: #000; font-weight: bold; padding: 10px 30px;">
+                Tüm Değişiklikleri Kaydet
+            </button>
+        </header>
+
+        <div class="table-container" style="margin-bottom: 30px;">
+            <h3 class="table-title">Dükkan Profil Bilgileri</h3>
+            <form style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">DÜKKAN ADI</label>
+                    <input type="text" value="Beyoğlu Berber" style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none;">
+                </div>
+                <div>
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">TELEFON NUMARASI</label>
+                    <input type="text" value="0532 123 45 67" style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none;">
+                </div>
+                <div style="grid-column: span 2;">
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">AÇIK ADRES</label>
+                    <input type="text" value="İstiklal Caddesi, No: 123, Beyoğlu / İstanbul" style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none;">
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h3 class="table-title">Çalışma Saatleri</h3>
+            <form style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                <div>
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">AÇILIŞ SAATİ</label>
+                    <input type="time" value="09:00" style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none; color-scheme: dark;">
+                </div>
+                <div>
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">KAPANIŞ SAATİ</label>
+                    <input type="time" value="21:00" style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none; color-scheme: dark;">
+                </div>
+                <div>
+                    <label style="display: block; color: var(--text-muted); font-size: 12px; margin-bottom: 8px;">KAPALI GÜN</label>
+                    <select style="width: 100%; padding: 12px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 4px; outline: none;">
+                        <option>Pazartesi</option>
+                        <option selected>Pazar</option>
+                        <option>Kapalı Gün Yok</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+</body>
+</html>

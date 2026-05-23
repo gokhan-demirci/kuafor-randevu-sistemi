@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyoğlu Berber - Personel Girişi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #111111; }
+        .gold-text { color: #cba052; }
+        .gold-border { border-color: #cba052; }
+        .gold-bg { background-color: #cba052; }
+        .gold-bg:hover { background-color: #e0b45c; }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+
+    <div class="w-full max-w-md bg-[#1a1a1a] p-8 rounded-lg border border-[#333333] shadow-lg">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-serif font-bold gold-text tracking-widest uppercase">Beyoğlu Berber</h1>
+            <p class="text-gray-400 text-sm mt-2">Yönetim Paneli Girişi</p>
+        </div>
+
+        <form action="admin.html" method="GET" class="space-y-6">
+            <div>
+                <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">E-POSTA</label>
+                <input type="email" required 
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none focus:gold-border transition-colors" 
+                    placeholder="ornek@beyogluberber.com">
+            </div>
+
+            <div>
+                <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">ŞİFRE</label>
+                <input type="password" required 
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none focus:gold-border transition-colors" 
+                    placeholder="••••••••">
+            </div>
+
+            <button type="submit" 
+                class="w-full gold-bg text-black font-bold py-3 px-4 rounded transition-colors text-sm tracking-widest">
+                GİRİŞ YAP
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-gray-500 hover:text-white text-xs transition-colors">← Ana Sayfaya Dön</a>
+        </div>
+    </div>
+
+</body>
+</html>
