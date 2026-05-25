@@ -1,30 +1,45 @@
-package com.kuaforrys.kuafor_backend.entity;
+package com.kuaforrys.kuafor_backend;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-@Entity
-public class Berber {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    private String adSoyad;
-    private String uzmanlikAlani;
-    private String calismaSaatleri;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+import com.kuaforrys.kuafor_backend.entity.Musteri;
+import com.kuaforrys.kuafor_backend.repository.MusteriRepository;
+import com.kuaforrys.kuafor_backend.service.MusteriService;
 
-    public String getAdSoyad() { return adSoyad; }
-    public void setAdSoyad(String adSoyad) { this.adSoyad = adSoyad; }
+@ExtendWith(MockitoExtension.class)
+public class MusteriServiceTest {
 
-    public String getUzmanlikAlani() { return uzmanlikAlani; }
-    public void setUzmanlikAlani(String uzmanlikAlani) { this.uzmanlikAlani = uzmanlikAlani; }
+    @Mock
+    private MusteriRepository repository;
 
-    public String getCalismaSaatleri() { return calismaSaatleri; }
-    public void setCalismaSaatleri(String calismaSaatleri) { this.calismaSaatleri = calismaSaatleri; }
+    @InjectMocks
+    private MusteriService service;
+
+    @Test
+    public void testMusteriKaydet() {
+      
+        Musteri sahteMusteri = new Musteri();
+        sahteMusteri.setId(1L);
+        sahteMusteri.setAdSoyad("Ecrin Yildiz");
+        sahteMusteri.setTelefon("05551112233");
+
+        
+        when(repository.save(any(Musteri.class))).thenReturn(sahteMusteri);
+
+     
+        Musteri kaydedilen = service.musteriKaydet(sahteMusteri);
+
+        
+        assertNotNull(kaydedilen);
+        assertEquals("Ecrin Yildiz", kaydedilen.getAdSoyad());
+    }
 }
