@@ -278,5 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dateInput.value = today;
     }
 
-    loadBerbersFromBackend();
+   
+     loadBerbersFromBackend();
 });
