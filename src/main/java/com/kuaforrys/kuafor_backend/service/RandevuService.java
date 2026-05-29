@@ -1,6 +1,9 @@
 package com.kuaforrys.kuafor_backend.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.kuaforrys.kuafor_backend.entity.Randevu;
 import com.kuaforrys.kuafor_backend.repository.RandevuRepository;
 
@@ -13,8 +16,13 @@ public class RandevuService {
         this.repository = repository;
     }
 
-    // Randevu kaydetme fonksiyonumuz
+    // Randevu kaydetme
     public Randevu randevuOlustur(Randevu randevu) {
         return repository.save(randevu);
+    }
+
+    // Tüm randevuları listeleme
+    public List<Randevu> tumRandevulariGetir() {
+        return repository.findAll();
     }
 }

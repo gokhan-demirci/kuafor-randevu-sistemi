@@ -1,4 +1,3 @@
-
 function selectService(clickedElement) {
     const services = document.querySelectorAll('.service-card');
 
@@ -23,7 +22,6 @@ function selectService(clickedElement) {
     clearAppointmentResult();
 }
 
-
 function selectBarber(clickedElement) {
     const barbers = document.querySelectorAll('.barber-card');
 
@@ -34,7 +32,6 @@ function selectBarber(clickedElement) {
     clickedElement.classList.add('selected');
     clearAppointmentResult();
 }
-
 
 function selectTime(clickedElement) {
     if (clickedElement.classList.contains('booked')) {
@@ -59,7 +56,6 @@ function updateTotalPrice(price) {
     }
 }
 
-
 function clearAppointmentResult() {
     const resultBox = document.getElementById('appointment-result');
 
@@ -68,7 +64,6 @@ function clearAppointmentResult() {
         resultBox.classList.remove('show');
     }
 }
-
 
 function validateAppointmentForm(appointment) {
     if (!appointment.service) {
@@ -109,8 +104,7 @@ function validateAppointmentForm(appointment) {
     return true;
 }
 
-
-function randevuyuOnayla() {
+async function randevuyuOnayla() {
     const selectedService = document.querySelector('.service-card.selected');
     const selectedBarber = document.querySelector('.barber-card.selected');
     const selectedTime = document.querySelector('.time-box.selected');
@@ -119,6 +113,7 @@ function randevuyuOnayla() {
     const nameInput = document.getElementById('customer-name');
     const phoneInput = document.getElementById('customer-phone');
     const noteInput = document.getElementById('customer-note');
+    const submitButton = document.querySelector('.submit-btn');
 
     const appointment = {
         service: selectedService ? selectedService.dataset.service : '',
@@ -137,14 +132,58 @@ function randevuyuOnayla() {
         return;
     }
 
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.innerText = 'KAYDEDİLİYOR...';
+    }
 
-    const savedAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
-    savedAppointments.push(appointment);
-    localStorage.setItem('appointments', JSON.stringify(savedAppointments));
+    try {
+        /*
+            Önce eski frontend mantığını koruyoruz.
+            Backend çalışmasa bile randevu oluşturma butonu bozulmayacak.
+        */
+        const savedAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+        savedAppointments.push(appointment);
+        localStorage.setItem('appointments', JSON.stringify(savedAppointments));
 
-    showAppointmentResult(appointment);
+        /*
+            Backend varsa ayrıca backend'e göndermeyi deniyoruz.
+            api.js yoksa ya da backend kapalıysa buton bozulmaz.
+        */
+        if (typeof api !== 'undefined') {
+            try {
+                await api.musteriKayit({
+                    adSoyad: appointment.customerName,
+                    telefon: appointment.phone,
+                    sifre: appointment.phone.slice(-4) || '1234'
+                });
+
+                const savedRandevu = await api.randevuAl({
+                    musteriTelefon: appointment.phone,
+                    berberAdi: appointment.barber,
+                    tarih: appointment.date,
+                    saat: appointment.time
+                });
+
+                appointment.backendId = savedRandevu ? savedRandevu.id : null;
+
+            } catch (backendError) {
+                console.warn('Backend bağlantısı başarısız. Randevu sadece frontend tarafında kaydedildi.', backendError);
+            }
+        }
+
+        showAppointmentResult(appointment);
+
+    } catch (error) {
+        console.error('Randevu oluşturulurken hata oluştu:', error);
+        showAppointmentError('Randevu oluşturulurken beklenmeyen bir hata oluştu.');
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerText = 'RANDEVUYU ONAYLA';
+        }
+    }
 }
-
 
 function showAppointmentResult(appointment) {
     const resultBox = document.getElementById('appointment-result');
@@ -165,10 +204,24 @@ function showAppointmentResult(appointment) {
         <p><strong>Saat:</strong> ${appointment.time}</p>
         <p><strong>Toplam Tutar:</strong> ₺${appointment.price},00</p>
         ${appointment.note ? `<p><strong>Not:</strong> ${appointment.note}</p>` : ''}
-       
     `;
 }
 
+function showAppointmentError(message) {
+    const resultBox = document.getElementById('appointment-result');
+
+    if (!resultBox) {
+        alert(message);
+        return;
+    }
+
+    resultBox.classList.add('show');
+
+    resultBox.innerHTML = `
+        <h3 style="color: #e74c3c;">Hata</h3>
+        <p>${message}</p>
+    `;
+}
 
 function formatDate(dateValue) {
     if (!dateValue) {
@@ -185,6 +238,36 @@ function formatDate(dateValue) {
     });
 }
 
+async function loadBerbersFromBackend() {
+    const barberContainer = document.getElementById('barber-container');
+
+    if (!barberContainer || typeof api === 'undefined') {
+        return;
+    }
+
+    try {
+        const berberler = await api.berberleriGetir();
+
+        if (!Array.isArray(berberler) || berberler.length === 0) {
+            return;
+        }
+
+        barberContainer.innerHTML = berberler.map((berber, index) => `
+            <div 
+                class="barber-card ${index === 0 ? 'selected' : ''}" 
+                data-barber="${berber.adSoyad}" 
+                onclick="selectBarber(this)"
+            >
+                <div class="icon">✂</div>
+                <h4>${berber.adSoyad}</h4>
+                <p>${berber.uzmanlikAlani || 'Berber'}</p>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.warn('Berber listesi backendden alınamadı. Varsayılan HTML listesi kullanılacak.', error);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const dateInput = document.getElementById('appointment-date');
@@ -194,4 +277,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dateInput.min = today;
         dateInput.value = today;
     }
+
+    loadBerbersFromBackend();
 });

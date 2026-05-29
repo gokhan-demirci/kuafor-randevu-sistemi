@@ -6,7 +6,7 @@ import com.kuaforrys.kuafor_backend.service.RandevuService;
 
 @RestController
 @RequestMapping("/api/randevu")
-@CrossOrigin("*") // Bu satır Serkan ve Can'ın yazdığı arayüzün senin kodlarına sorunsuz bağlanmasını sağlar!
+@CrossOrigin("*") 
 public class RandevuController {
 
     private final RandevuService service;
@@ -15,9 +15,13 @@ public class RandevuController {
         this.service = service;
     }
 
-    // Serkan'ların arayüzden göndereceği randevu bilgilerini burada yakalıyoruz
+    
     @PostMapping("/al")
     public Randevu randevuAl(@RequestBody Randevu randevu) {
         return service.randevuOlustur(randevu);
     }
+}
+@GetMapping("/liste")
+public java.util.List<Randevu> randevuListesi() {
+    return service.tumRandevulariGetir();
 }

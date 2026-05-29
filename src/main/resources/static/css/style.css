@@ -898,3 +898,11 @@ html {
         grid-template-columns: 1fr;
     }
 }
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.appointment-result h3 {
+    margin-bottom: 10px;
+}
