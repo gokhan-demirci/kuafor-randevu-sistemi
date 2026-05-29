@@ -18,25 +18,44 @@
     <div class="w-full max-w-md bg-[#1a1a1a] p-8 rounded-lg border border-[#333333] shadow-lg">
         <div class="text-center mb-8">
             <h1 class="text-2xl font-serif font-bold gold-text tracking-widest uppercase">Beyoğlu Berber</h1>
-            <p class="text-gray-400 text-sm mt-2">Yönetim Paneli Girişi</p>
+            <p class="text-gray-400 text-sm mt-2">Personel Girişi</p>
         </div>
 
-        <form action="admin.html" method="GET" class="space-y-6">
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">GİRİŞ TİPİ</label>
+                <select id="roleSelect"
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none transition-colors">
+                    <option value="admin">Admin</option>
+                    <option value="berber">Berber</option>
+                </select>
+            </div>
+
+            <div id="berberSelectArea" style="display: none;">
+                <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">BERBER SEÇ</label>
+                <select id="berberSelect"
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none transition-colors">
+                    <option value="Selim Beyoğlu">Selim Beyoğlu</option>
+                    <option value="Can Demir">Can Demir</option>
+                    <option value="Mert Alkan">Mert Alkan</option>
+                </select>
+            </div>
+
             <div>
                 <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">E-POSTA</label>
-                <input type="email" required 
-                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none focus:gold-border transition-colors" 
+                <input id="emailInput" type="email" required
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none transition-colors"
                     placeholder="ornek@beyogluberber.com">
             </div>
 
             <div>
                 <label class="block text-gray-400 text-xs font-bold mb-2 tracking-wide">ŞİFRE</label>
-                <input type="password" required 
-                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none focus:gold-border transition-colors" 
+                <input id="passwordInput" type="password" required
+                    class="w-full bg-[#111111] text-white border border-[#333333] rounded px-4 py-3 focus:outline-none transition-colors"
                     placeholder="••••••••">
             </div>
 
-            <button type="submit" 
+            <button type="submit"
                 class="w-full gold-bg text-black font-bold py-3 px-4 rounded transition-colors text-sm tracking-widest">
                 GİRİŞ YAP
             </button>
@@ -46,6 +65,34 @@
             <a href="index.html" class="text-gray-500 hover:text-white text-xs transition-colors">← Ana Sayfaya Dön</a>
         </div>
     </div>
+
+    <script>
+        const roleSelect = document.getElementById('roleSelect');
+        const berberSelectArea = document.getElementById('berberSelectArea');
+        const loginForm = document.getElementById('loginForm');
+
+        roleSelect.addEventListener('change', () => {
+            if (roleSelect.value === 'berber') {
+                berberSelectArea.style.display = 'block';
+            } else {
+                berberSelectArea.style.display = 'none';
+            }
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const role = roleSelect.value;
+
+            if (role === 'admin') {
+                window.location.href = 'admin.html';
+                return;
+            }
+
+            const selectedBerber = document.getElementById('berberSelect').value;
+            window.location.href = `berber-panel.html?berber=${encodeURIComponent(selectedBerber)}`;
+        });
+    </script>
 
 </body>
 </html>
